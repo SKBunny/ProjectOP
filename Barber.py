@@ -61,6 +61,6 @@ class Barber:
         #Повертає всі записи фахівця на певну дату
         return [a for a in self.appointments if a.date.date() == date.date()]
 
-    def __repr__(self):
-        #Представлення об'єкта фахівця у вигляді рядка
+    def __str__(self):
+        # Представлення об'єкта фахівця у вигляді рядка
         return f"Фахівець: {self.name}, Спеціалізація: {self.specialization}"

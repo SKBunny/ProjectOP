@@ -35,9 +35,9 @@ class Schedule:
 
         if isinstance(date, str):
             try:
-                date = datetime.strptime(date, "%d-%m-%Y")
+                date = datetime.strptime(date, "%d.%m.%Y")
             except ValueError:
-                print("Помилка: Некоректний формат дати. Використовуйте DD-MM-YYYY")
+                print("Помилка: Некоректний формат дати. Використовуйте DD.MM.YYYY")
                 return available_slots
 
         day_of_week = date.isoweekday()
@@ -74,9 +74,9 @@ class Schedule:
 
         if not isinstance(date, datetime):
             try:
-                date = datetime.strptime(date, "%d-%m-%Y %H:%M")
+                date = datetime.strptime(date, "%d.%m.%Y %H:%M")
             except ValueError:
-                print("Помилка: Некоректний формат дати. Використовуйте DD-MM-YYYY HH:MM")
+                print("Помилка: Некоректний формат дати. Використовуйте DD.MM.YYYY HH:MM")
                 return None
 
         if not self._validate_date_time(date):

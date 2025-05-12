@@ -19,9 +19,9 @@ class Appointment:
         #Встановлює і валідує дату запису
         if isinstance(date, str):
             try:
-                date = datetime.strptime(date, "%d-%m-%Y %H:%M")
+                date = datetime.strptime(date, "%d.%m.%Y %H:%M")
             except ValueError:
-                print("Помилка: Некоректний формат дати. Використовуйте DD-MM-YYYY HH:MM")
+                print("Помилка: Некоректний формат дати. Використовуйте DD.MM.YYYY HH:MM")
                 return False
 
         if not isinstance(date, datetime):
@@ -48,7 +48,7 @@ class Appointment:
         #Позначає запис як виконаний
         self.status = "completed"
 
-    def __repr__(self):
-        #Представлення об'єкта запису у вигляді рядка
-        date_str = self.date.strftime("%d-%m-%Y %H:%M")
+    def __str__(self):
+        # Представлення об'єкта запису у вигляді рядка
+        date_str = self.date.strftime("%d.%m.%Y %H:%M")
         return f"Запис #{self.id}: {self.customer.name} на {date_str} до {self.barber.name}, Послуга: {self.service.name}"

@@ -40,7 +40,7 @@ class BarberShop:
 
     def find_customer_by_phone(self, phone):
         #Шукає клієнта за номером телефону
-        cleaned_phone = ''.join(filter(str.isdigit, str(phone)))
+        cleaned_phone = ''.join(char for char in str(phone) if char.isdigit())
         for customer in self.customers:
             if customer.phone == cleaned_phone:
                 return customer

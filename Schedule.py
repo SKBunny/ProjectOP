@@ -1,8 +1,5 @@
-#Модуль, що містить клас Schedule для управління розкладом барбершопу
-
 from datetime import datetime, timedelta
 from Appointment import Appointment
-
 
 class Schedule:
     #Клас, що управляє розкладом барбершопу, доступністю фахівців та створенням записів

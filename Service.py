@@ -1,6 +1,4 @@
-# Модуль, що містить клас Service для управління послугами барбершопу
-from datetime import datetime, timedelta
-
+from datetime import datetime
 
 class Service:
     # Клас, що представляє послугу в барбершопі з інформацією про тривалість та ціну
@@ -16,7 +14,6 @@ class Service:
         return f"{self.name} ({self.duration} хв.) - {self.price} грн."
 
 
-# Функції інтерфейсу користувача, перенесені з main.py
 def clear_screen():
     # Очищає екран консолі
     print("\n" * 50)
@@ -37,7 +34,7 @@ def parse_date(date_str, format_str="%d.%m.%Y"):
 
 
 def parse_days_range(days_input):
-    # Перетворює рядок з діапазоном днів (наприклад, "1-5") в список чисел
+    # Перетворює рядок з діапазоном днів в список чисел
     days = []
     parts = days_input.split(",")
 
@@ -138,13 +135,13 @@ def handle_customer_menu(barbershop):
             else:
                 print("\n=== СПИСОК КЛІЄНТІВ ===")
                 for i, customer in enumerate(barbershop.customers, 1):
-                    print(f"{i}. {str(customer)}")
+                    print(f"{i}.{customer}")
 
         elif choice == "3":
             phone = input("Введіть номер телефону для пошуку: ")
             customer = barbershop.find_customer_by_phone(phone)
             if customer:
-                print(f"Знайдено клієнта: {str(customer)}")
+                print(f"Знайдено клієнта: {customer}")
             else:
                 print("Клієнта з таким номером телефону не знайдено.")
 
@@ -158,7 +155,7 @@ def handle_customer_menu(barbershop):
                 else:
                     print(f"\n=== ЗАПИСИ КЛІЄНТА {customer.name} ===")
                     for i, appointment in enumerate(appointments, 1):
-                        print(f"{i}. {str(appointment)}")
+                        print(f"{i}. {appointment}")
             else:
                 print("Клієнта з таким номером телефону не знайдено.")
 
@@ -170,7 +167,7 @@ def handle_customer_menu(barbershop):
 
 
 def handle_service_menu(barbershop):
-    # Обробляє меню управління послугами
+    # Меню управління послугами
     while True:
         print_service_menu()
         choice = input("Виберіть опцію: ")
@@ -192,7 +189,7 @@ def handle_service_menu(barbershop):
             else:
                 print("\n=== СПИСОК ПОСЛУГ ===")
                 for i, service in enumerate(barbershop.services, 1):
-                    print(f"{i}. {str(service)}")
+                    print(f"{i}.{service}")
 
         elif choice == "3":
             if not barbershop.services:
@@ -201,7 +198,7 @@ def handle_service_menu(barbershop):
 
             print("\n=== СПИСОК ПОСЛУГ ===")
             for i, service in enumerate(barbershop.services, 1):
-                print(f"{i}. {str(service)}")
+                print(f"{i}. {service}")
 
             try:
                 idx = int(input("Виберіть номер послуги для видалення: ")) - 1
@@ -240,7 +237,7 @@ def handle_schedule_menu(barbershop):
                 else:
                     print(f"\n=== ДОСТУПНІ ФАХІВЦІ НА {date_str} о {time_str} ===")
                     for i, barber in enumerate(available_barbers, 1):
-                        print(f"{i}. {str(barber)}")
+                        print(f"{i}. {barber}")
             except ValueError:
                 print("Помилка: Неправильний формат дати або часу.")
 
@@ -252,7 +249,7 @@ def handle_schedule_menu(barbershop):
 
             print("\n=== СПИСОК ФАХІВЦІВ ===")
             for i, barber in enumerate(barbershop.barbers, 1):
-                print(f"{i}. {str(barber)}")
+                print(f"{i}. {barber}")
 
             try:
                 barber_idx = int(input("Виберіть номер фахівця: ")) - 1
@@ -267,7 +264,7 @@ def handle_schedule_menu(barbershop):
             else:
                 print("\n=== СПИСОК ПОСЛУГ ===")
                 for i, service in enumerate(barbershop.services, 1):
-                    print(f"{i}. {str(service)}")
+                    print(f"{i}. {service}")
 
                 try:
                     service_idx = int(input("Виберіть номер послуги (або 0 для стандартної тривалості): ")) - 1
@@ -319,7 +316,7 @@ def handle_appointment_menu(barbershop):
             # Вибір клієнта
             print("\n=== СПИСОК КЛІЄНТІВ ===")
             for i, customer in enumerate(barbershop.customers, 1):
-                print(f"{i}. {str(customer)}")
+                print(f"{i}. {customer}")
 
             try:
                 customer_idx = int(input("Виберіть номер клієнта: ")) - 1
@@ -331,7 +328,7 @@ def handle_appointment_menu(barbershop):
             # Вибір фахівця
             print("\n=== СПИСОК ФАХІВЦІВ ===")
             for i, barber in enumerate(barbershop.barbers, 1):
-                print(f"{i}. {str(barber)}")
+                print(f"{i}. {barber}")
 
             try:
                 barber_idx = int(input("Виберіть номер фахівця: ")) - 1
@@ -343,7 +340,7 @@ def handle_appointment_menu(barbershop):
             # Вибір послуги
             print("\n=== СПИСОК ПОСЛУГ ===")
             for i, service in enumerate(barbershop.services, 1):
-                print(f"{i}. {str(service)}")
+                print(f"{i}. {service}")
 
             try:
                 service_idx = int(input("Виберіть номер послуги: ")) - 1
@@ -380,7 +377,7 @@ def handle_appointment_menu(barbershop):
             appointment = barbershop.create_appointment(customer, barber, service, slot)
             if appointment:
                 print("Запис успішно створено!")
-                print(str(appointment))
+                print(appointment)
             else:
                 print("Не вдалося створити запис. Спробуйте ще раз.")
 
@@ -403,7 +400,7 @@ def handle_appointment_menu(barbershop):
                 continue
 
             for i, appointment in enumerate(active_appointments, 1):
-                print(f"{i}. {str(appointment)}")
+                print(f"{i}. {appointment}")
 
             try:
                 app_idx = int(input("Виберіть номер запису для скасування: ")) - 1
@@ -432,7 +429,7 @@ def handle_appointment_menu(barbershop):
                 continue
 
             for i, appointment in enumerate(active_appointments, 1):
-                print(f"{i}. {str(appointment)}")
+                print(f"{i}. {appointment}")
 
             try:
                 app_idx = int(input("Виберіть номер запису для позначення як виконаного: ")) - 1
@@ -461,7 +458,7 @@ def handle_appointment_menu(barbershop):
                         "completed": "Виконано"
                     }
                     status = status_text.get(appointment.status, appointment.status)
-                    print(f"{i}. {str(appointment)} - {status}")
+                    print(f"{i}. {appointment} - {status}")
 
         elif choice == "0":
             break
@@ -489,7 +486,7 @@ def handle_barber_menu(barbershop):
             else:
                 print("\n=== СПИСОК ФАХІВЦІВ ===")
                 for i, barber in enumerate(barbershop.barbers, 1):
-                    print(f"{i}. {str(barber)}")
+                    print(f"{i}. {barber}")
 
         elif choice == "3":
             if not barbershop.barbers:

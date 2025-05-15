@@ -1,4 +1,3 @@
-#Модуль, що містить клас Appointment для управління записами клієнтів на послуги
 from datetime import datetime
 
 class Appointment:

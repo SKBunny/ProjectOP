@@ -1,11 +1,6 @@
-# Головний модуль програми для управління барбершопом з консольним інтерфейсом
-from datetime import datetime, timedelta
 from barbershop import BarberShop
-# Імпортуємо всі функції з модуля Service
-from Service import (print_menu, print_customer_menu, print_barber_menu, print_appointment_menu,
-                    print_schedule_menu, print_service_menu, handle_customer_menu, handle_barber_menu,
-                    handle_appointment_menu, handle_schedule_menu, handle_service_menu, parse_date, format_date,
-                    clear_screen)
+from Service import (print_menu, handle_customer_menu, handle_barber_menu,
+                    handle_appointment_menu, handle_schedule_menu, handle_service_menu)
 
 def main():
     # Головна функція програми

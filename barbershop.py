@@ -1,5 +1,3 @@
-#Модуль, що містить клас BarberShop для управління барбершопом
-
 from Customer import Customer
 from Barber import Barber
 from Service import Service

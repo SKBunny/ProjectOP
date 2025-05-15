@@ -1,4 +1,3 @@
-#Модуль, що містить клас Barber для управління даними про фахівців барбершопу
 from datetime import datetime, timedelta
 
 class Barber:
@@ -43,6 +42,7 @@ class Barber:
             return False
 
         for appointment in self.appointments:
+            # Перевіряє всі записи(розраховує час для запису)
             if appointment.date.date() == datetime_obj.date():
                 app_start = appointment.date
                 app_end = appointment.date + timedelta(minutes=appointment.duration)
